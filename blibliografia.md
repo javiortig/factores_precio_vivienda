@@ -1,0 +1,2 @@
+- [Spanish Housing Dataset: Location, Size, Price](https://www.kaggle.com/datasets/thedevastator/spanish-housing-dataset-location-size-price-and/data)
+- [BeatufilSoup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)

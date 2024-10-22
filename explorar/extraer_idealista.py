@@ -1,11 +1,13 @@
-import requests
-from bs4 import BeautifulSoup
-import csv
-
 """
 Este método puede ser limitante debido a las medidas de ciberseguridad que tiene idealista, ya que no permite hacer vairas peticiones 
 de forma continuada. Quizá sería interesante utilizar proxies rotativos.
 """
+
+
+import requests
+from bs4 import BeautifulSoup
+import csv
+
 
 url = 'https://www.idealista.com/en/venta-viviendas/madrid-madrid/'
 
@@ -47,7 +49,7 @@ if response.status_code == 200:
         print('-' * 50)
 
     # Guarda los datos en un csv
-    with open('idealista_listings.csv', mode='w', newline='', encoding='utf-8') as file:
+    with open('./data/idealista_listings_generado.csv', mode='w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
 
         writer.writerow(['Title', 'Price', 'Location'])
