@@ -1,0 +1,1 @@
+[https://www.quora.com/What-are-some-interesting-data-analysis-done-with-real-estate-data](https://www.quora.com/What-are-some-interesting-data-analysis-done-with-real-estate-data)
