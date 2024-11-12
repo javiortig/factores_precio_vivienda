@@ -3,5 +3,5 @@
 - [Formas de analizar datos de vivienda](https://www.quora.com/What-are-some-interesting-data-analysis-done-with-real-estate-data)
 - [Analisis con realtor del 'Monthly Market Hotness'](https://github.com/analyticsariel/projects/blob/master/economic_data/realtor_monthly_market_hotness.ipynb)
 - [INE Statistics on transfer of property rights. Methodology](https://www.ine.es/dyngs/INEbase/en/operacion.htm?c=Estadistica_C&cid=1254736171438&menu=metodologia&idp=1254735576757)
-- [Registradores de España - Compra-Ventas de Inmuebles Uso Residencial por Provincia](https://opendata.registradores.org/dataset/dataset/compraventas-de-inmuebles-uso-residencial-por-provincia)
+- [Registradores de España - Compra-Ventas de Inmuebles Uso Residencial por Provincia](https://opendata.registradores.org/compraventas-de-inmuebles)
 - 

@@ -1,0 +1,8 @@
+- Busco posibles fuentes de datos de todo tipo. Comienzo comenzando por los datos de sitios de compraventa al estilo idealista.
+- Exploro un script de Python para la extracción de información de un archivo de audio. Lo modifico para camuflarlo como un browser normal y no denieguen las peticiones, además de actualizarlo según el nuevo layout de idealista.
+- Exploro datasets y metodologías de otros trabajos similares como el de [https://www.kaggle.com/datasets/thedevastator/spanish-housing-dataset-location-size-price-and/data](https://www.kaggle.com/datasets/thedevastator/spanish-housing-dataset-location-size-price-and/data). Creo un script para limpiar un poco los datos y eliminar duplicidades.
+- Reestructuro los archivos.
+- Me reuno con Icíar para hablar del anteproyecto y de las futuras metas a largo plazo/enfoques para el proyecto (reflejado en el TODO). 
+- Genero el anteproyecto 
+- exploro multiples estudios del INE y su metodología en distintos estadísticos. Me centro en [monthly basis information on the number of
+transfers of rights on property](https://www.ine.es/en/metodologia/t30/t3030168_en.pdf), el cual me acaba llevando al registro mercantil y tras una bue exploración: [Datos de Open Data de los Registradores de España](https://opendata.registradores.org/compraventas-de-inmuebles). Obtengo unos 5000 datos del registro con un intervalo temporal del 2007 a 2024 y a lo largo de todo el territorio español.
