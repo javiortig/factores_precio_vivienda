@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import csv
 import time
 import random
-from typing import List, Dict
+from typing import Dict
 
 class IdealistaScraper:
     def __init__(self, base_url: str = 'https://www.idealista.com/venta-viviendas/madrid-madrid/', pages: int = 1, output_file: str = 'idealista_listings.csv'):
@@ -81,12 +81,3 @@ class IdealistaScraper:
                 writer.writerow(prop)
 
         print(f"Datos guardados en {self.output_file}")
-
-# Ejemplo de uso
-if __name__ == "__main__":
-    scraper = IdealistaScraper(
-        base_url='https://www.idealista.com/venta-viviendas/madrid-madrid/',
-        pages=3,  # Número de páginas que quieres scrapea
-        output_file='./data/idealista_listings.csv'
-    )
-    scraper.scrape()

@@ -1,9 +1,10 @@
 import os
-from idealista_scraper import IdealistaScraper
+from .idealista_scraper import IdealistaScraper
+
 
 def main():
     # Asegura que la carpeta ../data existe
-    data_folder = os.path.join(os.path.dirname(__file__), '..', 'data')
+    data_folder = os.path.join(os.path.dirname(__file__), '.', 'data')
     os.makedirs(data_folder, exist_ok=True)
 
     output_path = os.path.join(data_folder, 'idealista_listings.csv')
