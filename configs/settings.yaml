@@ -1,0 +1,19 @@
+# Configuración básica del MVP
+data_paths:
+  municipal_series_csv: data_raw/mitma_municipal_prices.csv
+  demo_points_csv: data_raw/demo/demo_points.csv
+  hex_prices_parquet: data/hex/hex_prices.parquet
+
+h3:
+  resolution: 8      # 7 = más rápido, 8 = más detalle
+  default_radius: 12 # radio de k-ring para generar cobertura municipal (modo rápido)
+
+forecast:
+  horizon_quarters: 8
+  backtest_folds: 4
+
+app:
+  map_initial_view:
+    lat: 40.4168   # Madrid
+    lon: -3.7038
+    zoom: 4.4
