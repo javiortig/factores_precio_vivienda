@@ -1,0 +1,15 @@
+app:
+  map_initial_view:
+    lat: 40.4168
+    lon: -3.7038
+    zoom: 4.4
+data_paths:
+  demo_points_csv: data_raw/demo/demo_points.csv
+  hex_prices_parquet: data/hex/hex_prices.parquet
+  municipal_series_csv: data_raw/mitma_municipal_prices.csv
+forecast:
+  backtest_folds: 4
+  horizon_quarters: 8
+h3:
+  default_radius: 12
+  resolution: 8
