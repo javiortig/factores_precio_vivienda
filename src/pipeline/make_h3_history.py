@@ -32,13 +32,8 @@ def build_hex_history(settings_path: str | Path, use_demo: bool = False) -> None
 
     # --- 1. Cargar datos ---
     if use_demo:
-        demo = pd.read_csv(cfg.data_paths["demo_points_csv"])
-        demo["quarter"] = pd.PeriodIndex(demo["date"], freq="Q")
-        muni_series = (
-            demo.groupby(["municipio_id", "municipio", "quarter"], as_index=False)["price_eur_m2"]
-            .mean()
-            .rename(columns={"quarter": "date"})
-        )
+        from src.h3.generate_h3_coverage import generate_demo_series
+        muni_series = generate_demo_series()
         coverage = demo_coverage(res)
     else:
         muni_series = read_municipal_series(municipal_csv)
