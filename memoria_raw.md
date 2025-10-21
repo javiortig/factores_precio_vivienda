@@ -8,3 +8,5 @@
 transfers of rights on property](https://www.ine.es/en/metodologia/t30/t3030168_en.pdf), el cual me acaba llevando al registro mercantil y tras una bue exploración: [Datos de Open Data de los Registradores de España](https://opendata.registradores.org/compraventas-de-inmuebles). Obtengo unos 5000 datos del registro con un intervalo temporal del 2007 a 2024 y a lo largo de todo el territorio español.
 
 - Cambio la estructura/esqueleto general del proyecto para acercarlo al release final. Replanteo el proyecto para centrarme en un posible despliegue más aplicado al big data, y la creación de un mapa de calor basado en h3 r7
+
+- Me centro en crear un ´data lake´ y busco distintas fuentes de datos. Creo un pequeño generador de datos como demo.

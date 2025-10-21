@@ -1,0 +1,12 @@
+# RUTAS DE ENTRADA
+mitma_csv: data_raw/mitma_municipal_prices.csv   # MITMA valor tasado municipal (tu CSV)
+ine_ipv_url: "https://www.ine.es/jaxiT3/files/t/csv_bdsc/25173.csv"  # IPV CCAA (INE) CSV con ';'
+euribor_csv: data_raw/bde_euribor.csv            # Euríbor mensual o trimestral (tu CSV)
+centroids_csv: data_raw/municipios_centroids.csv # municipio_id, municipio, lat, lon
+
+# PARÁMETROS H3
+h3_resolution: 8
+krings_radius_default: 10
+
+# SALIDAS
+out_dir: data/feature_store
