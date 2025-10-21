@@ -62,7 +62,7 @@ def render_legend(min_val, max_val, palette_name):
 
 def main():
     st.set_page_config(page_title="Spain Housing — Heatmap", layout="wide")
-    st.markdown("<h2 style='margin-bottom:0'>🏠 Spain Housing — Heatmap</h2><div style='color:#6b7280'>Mapa de calor suave, bonito y rápido (histórico/predicción)</div>", unsafe_allow_html=True)
+    st.markdown("<h2 style='margin-bottom:0'>🏠 Vivienda en España. Mapa de Calor</h2>", unsafe_allow_html=True)
 
     settings_path = os.getenv("SH3_SETTINGS", "configs/settings.yaml")
     if not os.path.exists(settings_path):
