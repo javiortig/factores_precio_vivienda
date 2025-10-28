@@ -25,7 +25,7 @@ class IdealistaScraper:
         self,
         base_url: str = "https://www.idealista.com/venta-viviendas/madrid-madrid/",
         pages: int = 1,
-        output_file: str = "idealista_listings.csv",
+        output_file: str = "./data/demo/idealista_listings.csv",
         backend: str = "requests",  # "requests" | "playwright"
         headless: bool = True,
         min_delay: float = 2.0,
