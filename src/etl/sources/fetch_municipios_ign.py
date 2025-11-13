@@ -1,37 +1,53 @@
-import requests, geopandas as gpd
-from shapely.geometry import shape
-import pandas as pd
 from pathlib import Path
+import requests, zipfile, urllib.request, sys, io
 
-BASE = "https://api-features.ign.es/collections/administrativeunit/items"
-out = []
-url = BASE + "?limit=1000"
-while url:
-    r = requests.get(url, timeout=60); r.raise_for_status()
-    j = r.json()
-    for f in j["features"]:
-        props = f.get("properties", {})
-        # Heurística de nivel municipal
-        level = (props.get("level") or props.get("adminLevel") or "").lower()
-        is_muni = any(x in level for x in ["municip", "lau", "municipality"])
-        if is_muni:
-            muni_id = props.get("lauCode") or props.get("localId") or props.get("inspireId")
-            name    = props.get("name") or props.get("officialName")
-            if muni_id and name:
-                out.append({"municipio_id": str(muni_id), "municipio": name, "geometry": shape(f["geometry"])})
-    # paginación
-    links = {l["rel"]: l["href"] for l in j.get("links", []) if "rel" in l}
-    url = links.get("next")
+sys.stdout.reconfigure(encoding="utf-8", errors="ignore")
 
-gdf = gpd.GeoDataFrame(out, geometry="geometry", crs=4326)
-# Normaliza municipio_id: si viene con formato LAU (ESXXXXXXX), extrae sufijo numérico si lo deseas
-def norm_id(x: str) -> str:
-    # intenta quedarte con el tramo numérico final de 5 dígitos si existe
-    import re
-    m = re.search(r"(\d{5})$", x)
-    return m.group(1) if m else x
-gdf["municipio_id"] = gdf["municipio_id"].astype(str).apply(norm_id)
+def download_http(url, out_path):
+    print(f"⬇️ HTTP -> {url}")
+    r = requests.get(url, timeout=180)
+    r.raise_for_status()
+    with open(out_path, "wb") as f:
+        f.write(r.content)
+    return out_path
 
-Path("data_raw/geo").mkdir(parents=True, exist_ok=True)
-gdf.to_file("data_raw/geo/municipios_ign.geojson", driver="GeoJSON")
-print("✅ data_raw/geo/municipios_ign.geojson")
+def download_ftp(url, out_path):
+    print(f"⬇️ FTP -> {url}")
+    with urllib.request.urlopen(url) as response, open(out_path, "wb") as out_file:
+        out_file.write(response.read())
+    return out_path
+
+def main():
+    root = Path(__file__).resolve().parents[3]
+    out_dir = root / "data_raw" / "geo"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_zip = out_dir / "recintos_municipales.zip"
+
+    urls = [
+        # Portal HTTP (a veces HTML)
+        "https://centrodedescargas.cnig.es/CentroDescargas/downloadFile.do?file=/RCM/RECINTOS_MUNICIPALES_INSP/recintos_municipales_inspire_peninbal_etrs89.zip",
+        # Mirror FTP (sin SSL)
+        "ftp://ftpgeodesia.ign.es/RCM/recintos_municipales_inspire_peninbal_etrs89.zip",
+    ]
+
+    for url in urls:
+        try:
+            if url.startswith("ftp://"):
+                path = download_ftp(url, out_zip)
+            else:
+                path = download_http(url, out_zip)
+
+            with zipfile.ZipFile(path, "r") as zf:
+                zf.extractall(out_dir)
+            print(f"✅ Extraído correctamente desde {url}")
+            return
+        except zipfile.BadZipFile:
+            print(f"⚠️ {url} no es un ZIP válido, probando siguiente fuente…")
+        except Exception as e:
+            print(f"⚠️ Error con {url}: {e}")
+
+    print("❌ No se pudo obtener el shapefile de municipios desde ninguna fuente.")
+    print ("Prueba a descargarlo manualmente desde https://centrodedescargas.cnig.es/CentroDescargas/resultados-busqueda")
+
+if __name__ == "__main__":
+    main()

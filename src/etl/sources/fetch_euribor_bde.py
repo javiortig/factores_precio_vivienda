@@ -1,6 +1,10 @@
 # src/etl/sources/fetch_euribor_bde.py
 from pathlib import Path
 import requests
+import sys
+
+sys.stdout.reconfigure(encoding='utf-8', errors='ignore')
+
 
 RAW = Path("data_raw/macro"); RAW.mkdir(parents=True, exist_ok=True)
 OUT = RAW / "ti_1_7.csv"

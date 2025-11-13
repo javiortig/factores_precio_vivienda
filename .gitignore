@@ -1,0 +1,138 @@
+# =========================
+# 🐍 PYTHON / ENVIRONMENT
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual/Conda environments
+.env
+.venv/
+venv/
+env/
+*.env
+*.conda
+*.yml
+*.yaml
+*.lock
+
+# Jupyter / VSCode
+.ipynb_checkpoints/
+.vscode/
+.idea/
+*.code-workspace
+
+# =========================
+# 📦 BUILD / DIST
+# =========================
+build/
+dist/
+*.egg-info/
+.eggs/
+MANIFEST
+.DS_Store
+Thumbs.db
+
+# =========================
+# 🗂️ DATA & OUTPUTS
+# =========================
+# Raw data (fuentes externas)
+data_raw/
+data_raw.zip
+
+# Procesados o resultados intermedios
+data/
+data_temp/
+tmp/
+temp/
+output/
+outputs/
+cache/
+__output__/
+
+# =========================
+# 🧠 ML / PIPELINES / TRACKING
+# =========================
+mlruns/
+mlflow.db
+prefect.log
+prefect_flows/
+wandb/
+tensorboard/
+checkpoints/
+models/
+artifacts/
+*.parquet
+*.feather
+*.pkl
+*.h5
+*.ckpt
+*.pt
+
+# =========================
+# 🧾 LOGS Y EJECUCIÓN
+# =========================
+logs/
+*.log
+*.tmp
+*.bak
+nohup.out
+
+# =========================
+# 🗄️ LOCAL / DEV FILES
+# =========================
+# IDE / OS noise
+desktop.ini
+*.swp
+*.swo
+*.bak
+*.old
+
+# Local batch or helper scripts
+make_flow.bat~
+run_*.bat~
+debug_*.bat~
+test_*.sh~
+
+# =========================
+# 📊 NOTEBOOKS / EXPORTS
+# =========================
+*.ipynb
+notebooks/
+exploracion/
+informes/
+memoria_raw.md
+blibliografia.md
+tutorias grupales/
+plantillas y enunciados/
+
+# =========================
+# 🔐 CREDENTIALS
+# =========================
+*.key
+*.pem
+*.crt
+*.p12
+*.json
+secrets/
+tokens/
+config.json
+config_local.json
+
+# =========================
+# Heavy files
+# =========================
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+
+# =========================
+# ✅ KEEP THESE
+# =========================
+!src/
+!configs/
+!make_flow.bat
+!README.md
+!TODO.md

@@ -1,4 +1,8 @@
 import pandas as pd, os
+import sys
+
+sys.stdout.reconfigure(encoding='utf-8', errors='ignore')
+
 os.makedirs("data_raw/mivau", exist_ok=True)
 # CSV consolidado público con valor tasado municipal (municipios >=25k habitantes)
 url = "https://www.icane.es/data/api/precio-vivienda-libre-municipios-tasaciones.csv"

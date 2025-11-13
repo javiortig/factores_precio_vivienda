@@ -1,0 +1,34 @@
+=== INICIO EJECUCION === 
+⬇️ HTTP -> https://centrodedescargas.cnig.es/CentroDescargas/downloadFile.do?file=/RCM/RECINTOS_MUNICIPALES_INSP/recintos_municipales_inspire_peninbal_etrs89.zip
+⚠️ https://centrodedescargas.cnig.es/CentroDescargas/downloadFile.do?file=/RCM/RECINTOS_MUNICIPALES_INSP/recintos_municipales_inspire_peninbal_etrs89.zip no es un ZIP válido, probando siguiente fuente…
+⬇️ FTP -> ftp://ftpgeodesia.ign.es/RCM/recintos_municipales_inspire_peninbal_etrs89.zip
+⚠️ Error con ftp://ftpgeodesia.ign.es/RCM/recintos_municipales_inspire_peninbal_etrs89.zip: <urlopen error [Errno 11001] getaddrinfo failed>
+❌ No se pudo obtener el shapefile de municipios desde ninguna fuente.
+✅ data_raw/mivau/valor_tasado_seed.csv
+⬇️ Descargando ADRH CSV -> C:\Users\soyun\Desktop\uni 2024-25\tfg\data_raw\ine\adrh_31142.csv
+✅ Guardado: C:\Users\soyun\Desktop\uni 2024-25\tfg\data_raw\ine\adrh_31142.csv
+⬇️ Descargando Padrón CSV -> C:\Users\soyun\Desktop\uni 2024-25\tfg\data_raw\ine\padron_33775.csv
+✅ Guardado: C:\Users\soyun\Desktop\uni 2024-25\tfg\data_raw\ine\padron_33775.csv
+⬇️ 2006 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2006_csv.csv
+⬇️ 2007 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2007_csv.csv
+⬇️ 2008 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2008_csv.csv
+⬇️ 2009 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2009_csv.csv
+⬇️ 2010 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2010_csv.csv
+⬇️ 2011 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2011_csv.csv
+⬇️ 2012 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2012_csv.csv
+⬇️ 2013 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2013_csv.csv
+⬇️ 2014 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2014_csv.csv
+⬇️ 2015 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2015_csv.csv
+⬇️ 2016 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2016_csv.csv
+⬇️ 2017 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2017_csv.csv
+⬇️ 2018 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2018_csv.csv
+⬇️ 2019 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2019_csv.csv
+⬇️ 2020 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2020_csv.csv
+⬇️ 2021 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2021_csv.csv
+⬇️ 2022 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2022_csv.csv
+⬇️ 2023 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2023_csv.csv
+⬇️ 2024 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2024_csv.csv
+⬇️ 2025 -> https://sede.sepe.gob.es/es/portaltrabaja/resources/sede/datos_abiertos/datos/Paro_por_municipios_2025_csv.csv
+✅ Consolidado -> C:\Users\soyun\Desktop\uni 2024-25\tfg\data_raw\sepe\paro_municipal_raw.csv
+⬇️ Descargando Euríbor (BdE) -> data_raw\macro\ti_1_7.csv
+✅ Guardado: data_raw\macro\ti_1_7.csv
