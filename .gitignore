@@ -4,6 +4,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # Virtual/Conda environments
 .env
@@ -37,7 +38,7 @@ Thumbs.db
 # 🗂️ DATA & OUTPUTS
 # =========================
 # Raw data (fuentes externas)
-data_raw/
+/data_raw
 data_raw.zip
 
 # Procesados o resultados intermedios
