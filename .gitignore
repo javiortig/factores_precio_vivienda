@@ -38,7 +38,7 @@ Thumbs.db
 # 🗂️ DATA & OUTPUTS
 # =========================
 # Raw data (fuentes externas)
-/data_raw
+data_raw/
 data_raw.zip
 
 # Procesados o resultados intermedios
