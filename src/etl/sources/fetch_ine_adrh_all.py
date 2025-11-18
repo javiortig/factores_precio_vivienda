@@ -3,7 +3,14 @@ from __future__ import annotations
 from pathlib import Path
 import requests, pandas as pd, sys, time, unicodedata
 
-sys.stdout.reconfigure(encoding="utf-8", errors="ignore")
+# Añadir src al path para imports absolutos
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+from src.etl.sources._fetch_utils import download_bytes, read_csv_auto_from_bytes
+
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="ignore")
+except AttributeError:
+    pass
 
 # Tabla correcta para MUNICIPIOS (ADRH): 31277
 API_JSON = "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/31277?tip=AM"

@@ -24,17 +24,17 @@ goto END
 :FETCH
 echo [1/3] DESCARGANDO FUENTES...
 echo --- Fetch IGN municipios ---
-%PY% -m src.etl.sources.fetch_municipios_ign       >> %LOGFILE% 2>&1
+%PY% src\etl\sources\fetch_municipios_ign.py       >> %LOGFILE% 2>&1
 echo --- Fetch MIVAU valor tasado ---
-%PY% -m src.etl.sources.fetch_valor_tasado_seed    >> %LOGFILE% 2>&1
+%PY% src\etl\sources\fetch_valor_tasado_seed.py    >> %LOGFILE% 2>&1
 echo --- Fetch INE ADRH ---
-%PY% -m src.etl.sources.fetch_ine_adrh             >> %LOGFILE% 2>&1
+%PY% src\etl\sources\fetch_ine_adrh_all.py         >> %LOGFILE% 2>&1
 echo --- Fetch INE Padron ---
-%PY% -m src.etl.sources.fetch_ine_padron           >> %LOGFILE% 2>&1
+%PY% src\etl\sources\fetch_ine_padron_all.py       >> %LOGFILE% 2>&1
 echo --- Fetch SEPE Paro ---
-%PY% -m src.etl.sources.fetch_sepe_paro_all        >> %LOGFILE% 2>&1
+%PY% src\etl\sources\fetch_sepe_paro_all.py        >> %LOGFILE% 2>&1
 echo --- Fetch BdE Euribor ---
-%PY% -m src.etl.sources.fetch_euribor_bde          >> %LOGFILE% 2>&1
+%PY% src\etl\sources\fetch_euribor_bde.py          >> %LOGFILE% 2>&1
 echo ✅ Fetch completado.
 goto END
 

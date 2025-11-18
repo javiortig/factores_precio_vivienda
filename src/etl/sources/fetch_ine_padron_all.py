@@ -3,7 +3,14 @@ from __future__ import annotations
 from pathlib import Path
 import requests, pandas as pd, sys, unicodedata, time
 
-sys.stdout.reconfigure(encoding="utf-8", errors="ignore")
+# Añadir src al path para imports absolutos
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+from src.etl.sources._fetch_utils import download_bytes, read_csv_auto_from_bytes
+
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="ignore")
+except AttributeError:
+    pass
 
 # INE Tempus API: Padrón por sexo, municipios y edad (año a año)
 # Tabla: 33775  -> JSON completo con tip=AM (toda la matriz)
@@ -52,36 +59,34 @@ def json_to_df(rows: list[dict]) -> pd.DataFrame:
     return pd.DataFrame.from_records(recs)
 
 def main():
-    print(f"⬇️ Padrón (JSON, nacional) → {API}")
+    print(f"⬇️ Padrón (TSV nacional) → {CSV_FALLBACK}")
+    # La API JSON de Tempus para padrón no devuelve municipios correctamente, usamos TSV directo
     try:
-        data = fetch_json(API)
-        OUT_JSON.write_text("[]", encoding="utf-8")
-        # guardo el JSON crudo por si quieres inspeccionarlo (para ahorrar espacio, lo omito)
-        # OUT_JSON.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
-        df = json_to_df(data)
-        if df.empty:
-            raise RuntimeError("La API JSON devolvió 0 filas; intentaré TSV de fallback.")
-        # Guardamos RAW “ancho”
-        df.to_csv(OUT_RAW, index=False)
-        print(f"🧾 RAW (no agregado): {OUT_RAW} ({len(df):,} filas)")
-    except Exception as e:
-        print(f"⚠️ API JSON falló ({e}). Pruebo CSV TSV fallback…")
-        # TSV: columnas con “Municipios/Provincias/Sexo/Edad…/Periodo/Total”
         df = pd.read_csv(CSV_FALLBACK, sep="\t", dtype=str, encoding="utf-8")
         df.to_csv(OUT_RAW, index=False)
         print(f"🧾 RAW TSV: {OUT_RAW} ({len(df):,} filas)")
+    except Exception as e:
+        print(f"❌ Error descargando TSV: {e}")
+        raise
 
-    # Agregamos a “Municipio × Periodo” sumando todo (sexo/edades)
+    # Agregamos a "Municipio × Periodo" sumando todo (sexo/edades)
     cols = {norm_txt(c): c for c in df.columns}
-    c_muni = next((cols[k] for k in cols if k.startswith("municipios")), None)
+    
+    # Detectar columnas clave (puede venir normalizado o sin normalizar)
+    c_muni = next((cols[k] for k in cols if "municipio" in k), None)
     c_per  = next((cols[k] for k in cols if "periodo" in k), None)
     c_val  = next((cols[k] for k in ("total","valor","values","value") if k in cols), None)
+    
     if not all([c_muni, c_per, c_val]):
         raise RuntimeError(f"No encuentro columnas clave en Padrón. Columnas: {list(df.columns)}")
 
     g = (df[[c_muni, c_per, c_val]]
          .rename(columns={c_muni:"municipio", c_per:"periodo", c_val:"valor"})
          .copy())
+    
+    # Filtrar filas sin municipio (son agregados provinciales/nacionales)
+    g = g[g["municipio"].notna() & (g["municipio"].str.strip() != "")]
+    
     g["valor"] = pd.to_numeric(g["valor"], errors="coerce")
     out = (g.dropna(subset=["valor"])
              .groupby(["municipio","periodo"], as_index=False)["valor"].sum())
