@@ -33,12 +33,24 @@ python src\etl\sources\fetch_euribor_bde.py
 - **Cobertura**: Municipios ≥25k habitantes
 
 ### 3. `fetch_ine_padron_all.py` — Padrón (población)
+⚠️ **ESTADO**: **Bloqueado por limitaciones API INE**
 - **Fuente**: INE - Tabla 33775 (Padrón por municipio, sexo, edad)
-- **URL TSV**: `https://www.ine.es/jaxiT3/files/t/csv_bd/33775.csv`
-- **Salidas**:
-  - `data_raw/ine/padron_all_raw.csv` (datos sin agregar)
-  - `data_raw/ine/padron_all.csv` (agregado municipio×periodo)
-- **Columnas agregadas**: `municipio`, `periodo`, `valor` (población total)
+- **URL API**: `https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/33775?tip=AM`
+- **Problema crítico**:
+  - La API Tempus JSON **solo devuelve datos de A Coruña (provincia 15)**
+  - Analizado: 29,376 items JSON → solo 95 municipios (todos código 15xxx)
+  - No existe parámetro URL para filtrar por provincia
+  - Los endpoints CSV (csv_bd, csv_bdsc) también devuelven solo 1 provincia
+- **Soluciones pendientes**:
+  1. ✅ **Recomendado**: Descargar manualmente PC-Axis (.px) completo desde [INE Tabla 33775](https://www.ine.es/jaxiT3/Tabla.htm?t=33775)
+     - Seleccionar TODOS los municipios (8,132) en la interfaz web
+     - Parsear con `pip install pyaxis`
+  2. ⚙️ Usar datos de población incluidos en `fetch_ine_adrh_all.py` (tabla 31277)
+  3. 🔧 Scraping de 52 provincias (riesgo ToS, muy lento)
+- **Salidas actuales** (solo A Coruña como placeholder):
+  - `data_raw/ine/padron_all_raw.csv` (572,526 filas → 95 municipios × múltiples categorías)
+  - `data_raw/ine/padron_all.csv` (1,871 filas → 95 municipios × ~20 períodos)
+- **Columnas esperadas**: `municipio_codigo`, `municipio`, `periodo`, `valor`
 
 ### 4. `fetch_ine_adrh_all.py` — Renta media (ADRH)
 - **Fuente**: INE - Tabla 31277 (Atlas de Distribución de Renta por Municipio)

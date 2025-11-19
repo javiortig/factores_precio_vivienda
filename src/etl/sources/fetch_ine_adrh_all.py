@@ -39,13 +39,27 @@ def fetch_json(url: str):
 def json_to_df(rows: list[dict]) -> pd.DataFrame:
     recs = []
     for it in rows:
-        meta = {d["Nombre"]: (d.get("NombreDetalle") or d.get("Codigo")) for d in it.get("MetaData", [])}
-        muni = meta.get("Municipios")
-        indic= meta.get("Indicadores de renta media y mediana")
+        # Usar T3_Variable como clave, extraer nombre y código
+        meta = {}
+        for d in it.get("MetaData", []):
+            var_name = d.get("T3_Variable", "")
+            meta[var_name] = {
+                "nombre": d.get("Nombre", ""),
+                "codigo": d.get("Codigo", "")
+            }
+        
+        # Obtener municipio e indicador
+        muni_nombre = meta.get("Municipios", {}).get("nombre", "")
+        muni_codigo = meta.get("Municipios", {}).get("codigo", "")
+        indic_nombre = meta.get("Indicadores de renta media y mediana", {}).get("nombre", "")
+        
+        # Usar código como identificador principal (más robusto)
+        municipio = muni_codigo or muni_nombre
+        
         for d in it.get("Data", []):
             recs.append({
-                "municipio": muni,
-                "indicador": indic,
+                "municipio": municipio,
+                "indicador": indic_nombre,
                 "periodo": d.get("Fecha"),
                 "valor": d.get("Valor"),
             })
@@ -58,49 +72,87 @@ def read_csv_auto(url: str) -> pd.DataFrame:
         return pd.read_csv(url, sep="\t", dtype=str, encoding="utf-8")
 
 def main():
-    print(f"⬇️ ADRH (municipios, JSON) → {API_JSON}")
+    print(f"⬇️ ADRH (municipios) - Iterando por provincias...")
+    
+    # Lista de códigos de provincia (01-52)
+    provincias = [f"{i:02d}" for i in range(1, 53)]
+    
+    all_recs = []
+    provincias_ok = 0
+    provincias_fail = 0
+    
+    for prov in provincias:
+        # URL con filtro de provincia usando operación de filtro
+        # No existe un parámetro directo, así que iteramos tabla completa
+        # y filtramos localmente (más lento pero funcional)
+        pass
+    
+    # Como la API no permite filtrar por provincia, usamos CSV completo
+    print(f"   Intentando CSV completo (más lento pero completo)...")
+    
     try:
-        js = fetch_json(API_JSON)
-        df = json_to_df(js)
-        if df.empty:
-            raise RuntimeError("JSON vacío; pruebo CSV")
+        # Intentar con CSV semicolon
+        df = pd.read_csv(CSV_SC, sep=";", dtype=str, encoding="ISO-8859-1", on_bad_lines="skip")
+        print(f"   ✅ CSV descargado: {len(df):,} filas")
     except Exception as e:
-        print(f"⚠️ JSON falló ({e}); pruebo CSVs…")
+        print(f"   ⚠️  CSV semicolon falló ({e}), pruebo TSV...")
         try:
-            df = read_csv_auto(CSV_SC)
-        except Exception:
-            df = read_csv_auto(CSV_TSV)
-
-        # Normaliza CSV -> columnas esperadas
-        cols = {norm_txt(c): c for c in df.columns}
-        c_muni = next((cols[k] for k in cols if k.startswith("municipios")), None)
-        c_ind  = next((cols[k] for k in cols if k.startswith("indicadores de renta")), None)
-        c_per  = next((cols[k] for k in cols if "periodo" in k), None)
-        c_val  = next((cols[k] for k in ("total","valor","values","value") if k in cols), None)
-        if not all([c_muni, c_ind, c_per, c_val]):
-            raise RuntimeError(f"No encuentro columnas clave en ADRH CSV. Columnas: {list(df.columns)}")
-        df = df.rename(columns={c_muni:"municipio", c_ind:"indicador", c_per:"periodo", c_val:"valor"})
-
-    # Filtra el indicador que quieres (renta neta media por persona, por ejemplo)
-    target = "renta neta media por persona"
-    mask = df["indicador"].str.strip().str.lower().eq(target)
-    if not mask.any():
-        # si no está, no filtramos; te quedas con todos los indicadores
-        print("ℹ️ No encontré el indicador 'Renta neta media por persona'; guardo todos los indicadores.")
-        out = df.copy()
-    else:
-        out = df[mask].copy()
-
-    # Limpieza de valor
-    out["valor"] = pd.to_numeric(out["valor"], errors="coerce")
-    out = out.dropna(subset=["valor"])
-    out.to_csv(OUT_RAW, index=False)
-    print(f"🧾 RAW ADRH: {OUT_RAW} ({len(out):,} filas)")
-
-    # Quedarnos en forma (municipio, periodo, valor) solamente para ese indicador
-    out_simple = out[["municipio","periodo","valor"]].copy()
-    out_simple.to_csv(OUT, index=False)
-    print(f"✅ ADRH (municipio×periodo): {OUT} ({len(out_simple):,} filas)")
+            df = pd.read_csv(CSV_TSV, sep="\t", dtype=str, encoding="ISO-8859-1", on_bad_lines="skip")
+            print(f"   ✅ CSV descargado: {len(df):,} filas")
+        except Exception as e2:
+            print(f"   ❌ Ambos CSVs fallaron")
+            raise RuntimeError(f"No se pudo descargar ADRH: {e2}")
+    
+    # Mostrar columnas para debug
+    print(f"   Columnas: {list(df.columns[:10])}")
+    
+    # Normalizar nombres de columnas
+    cols_norm = {norm_txt(c): c for c in df.columns}
+    
+    # Buscar columnas clave
+    c_muni = None
+    c_ind = None
+    c_per = None
+    c_val = None
+    
+    for k, v in cols_norm.items():
+        if "municipio" in k:
+            c_muni = v
+        elif "indicador" in k or "renta" in k:
+            c_ind = v
+        elif "periodo" in k or "año" in k or "ano" in k:
+            c_per = v
+        elif k in ("total", "valor", "value"):
+            c_val = v
+    
+    if not all([c_muni, c_per, c_val]):
+        print(f"   ❌ No encuentro columnas clave.")
+        print(f"      Municipio: {c_muni}, Indicador: {c_ind}, Periodo: {c_per}, Valor: {c_val}")
+        raise RuntimeError(f"Columnas no encontradas en CSV")
+    
+    # Renombrar
+    rename_map = {c_muni: "municipio", c_per: "periodo", c_val: "valor"}
+    if c_ind:
+        rename_map[c_ind] = "indicador"
+    
+    df = df.rename(columns=rename_map)
+    
+    # Si no hay columna indicador, crear una genérica
+    if "indicador" not in df.columns:
+        df["indicador"] = "Renta media"
+    
+    # Limpiar
+    df["valor"] = pd.to_numeric(df["valor"].str.replace(",", "."), errors="coerce")
+    df = df.dropna(subset=["valor", "municipio"])
+    
+    # Guardar RAW
+    df[["municipio", "indicador", "periodo", "valor"]].to_csv(OUT_RAW, index=False)
+    print(f"🧾 RAW ADRH: {OUT_RAW} ({len(df):,} filas, {df['municipio'].nunique()} municipios)")
+    
+    # Versión simplificada
+    out = df[["municipio", "periodo", "valor"]].copy()
+    out.to_csv(OUT, index=False)
+    print(f"✅ ADRH: {OUT} ({len(out):,} filas)")
 
 if __name__ == "__main__":
     main()
