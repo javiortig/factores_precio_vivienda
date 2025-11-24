@@ -10,3 +10,8 @@ transfers of rights on property](https://www.ine.es/en/metodologia/t30/t3030168_
 - Cambio la estructura/esqueleto general del proyecto para acercarlo al release final. Replanteo el proyecto para centrarme en un posible despliegue más aplicado al big data, y la creación de un mapa de calor basado en h3 r7
 
 - Me centro en crear un ´data lake´ y busco distintas fuentes de datos. Creo un pequeño generador de datos como demo.
+
+
+## Bibliografia
+[Datos padron](https://www.ine.es/dynt3/inebase/index.htm?padre=6225&capsel=6225)
+[Atlas de Distribucion de Renta de los Hogares](https://www.ine.es/ADRH/?config=config_ADRH_2023.json&showLayers=ADRH_2023_Renta_media_por_persona_cache&level=5)
