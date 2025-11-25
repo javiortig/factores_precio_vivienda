@@ -15,3 +15,34 @@ transfers of rights on property](https://www.ine.es/en/metodologia/t30/t3030168_
 ## Bibliografia
 [Datos padron](https://www.ine.es/dynt3/inebase/index.htm?padre=6225&capsel=6225)
 [Atlas de Distribucion de Renta de los Hogares](https://www.ine.es/ADRH/?config=config_ADRH_2023.json&showLayers=ADRH_2023_Renta_media_por_persona_cache&level=5)
+[Valor Tasado de la vivienda libre](https://apps.fomento.gob.es/BoletinOnline2/?nivel=2&orden=35000000)
+
+
+## Otros trabajos academicos:
+1. **Antipov & Pokryshevskaya (2012)**  
+*Mass appraisal of residential apartments: An application of Random Forest for valuation and a CART-based approach for model diagnostics*  
+[https://doi.org/10.1016/j.exger.2012.03.004](https://doi.org/10.1016/j.exger.2012.03.004)
+
+2. **Park & Bae (2015)**  
+*Using machine learning algorithms for housing price prediction: The case of Fairfax County, Virginia housing data*  
+[https://link.springer.com/chapter/10.1007/978-3-319-11599-3_26](https://link.springer.com/chapter/10.1007/978-3-319-11599-3_26)
+
+3. **Wu & Brynjolfsson (2015)**  
+*The Future of Prediction: How Google Searches Foreshadow Housing Prices and Sales*  
+[https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2022293](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2022293)
+
+4. **Beimer & Francke (2019)**  
+*Out-of-sample house price prediction by hedonic price models and machine learning algorithms*  
+[https://doi.org/10.1016/j.regsciurbeco.2019.103451](https://doi.org/10.1016/j.regsciurbeco.2019.103451)
+
+5. **Mora García et al. (2022)**  
+*Housing price prediction using machine learning algorithms in COVID-19 times*  
+[https://doi.org/10.1016/j.heliyon.2022.e09074](https://doi.org/10.1016/j.heliyon.2022.e09074)
+
+6. **Fu (2024)**  
+*A comparative study of house price prediction using Linear Regression and Random Forest models*  
+[https://arxiv.org/abs/2402.05123](https://arxiv.org/abs/2402.05123)
+
+7. **Jin et al. (2024)**  
+*Understanding the effects of socioeconomic factors on housing price appreciation using explainable AI*  
+[https://doi.org/10.1016/j.landusepol.2023.106559](https://doi.org/10.1016/j.landusepol.2023.106559)
