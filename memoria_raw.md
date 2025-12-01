@@ -29,7 +29,7 @@ transfers of rights on property](https://www.ine.es/en/metodologia/t30/t3030168_
 
 3. **Wu & Brynjolfsson (2015)**  
 *The Future of Prediction: How Google Searches Foreshadow Housing Prices and Sales*  
-[https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2022293](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2022293)
+[https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2022293](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2022293) -> searchFreq es una variable interesante, índices de búsquedas en Google Trends para categorías tipo “Real Estate Agencies”, “Real Estate Listings” y frases tipo “housing sales”, etc.
 
 4. **Beimer & Francke (2019)**  
 *Out-of-sample house price prediction by hedonic price models and machine learning algorithms*  
@@ -37,7 +37,7 @@ transfers of rights on property](https://www.ine.es/en/metodologia/t30/t3030168_
 
 5. **Mora García et al. (2022)**  
 *Housing price prediction using machine learning algorithms in COVID-19 times*  
-[https://doi.org/10.1016/j.heliyon.2022.e09074](https://doi.org/10.1016/j.heliyon.2022.e09074)
+[https://doi.org/10.1016/j.heliyon.2022.e09074](https://doi.org/10.1016/j.heliyon.2022.e09074) -> Location & environment Distancia al centro, distancia a la costa/playa.
 
 6. **Fu (2024)**  
 *A comparative study of house price prediction using Linear Regression and Random Forest models*  
@@ -45,4 +45,4 @@ transfers of rights on property](https://www.ine.es/en/metodologia/t30/t3030168_
 
 7. **Jin et al. (2024)**  
 *Understanding the effects of socioeconomic factors on housing price appreciation using explainable AI*  
-[https://doi.org/10.1016/j.landusepol.2023.106559](https://doi.org/10.1016/j.landusepol.2023.106559)
+[https://doi.org/10.1016/j.landusepol.2023.106559](https://doi.org/10.1016/j.landusepol.2023.106559) -> Renta per cápita / por declarante, Nivel educativo (% población con estudios universitarios, % sin estudios), Estructura demográfica, Estructura sectorial, Turismo.
