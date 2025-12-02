@@ -46,3 +46,7 @@ transfers of rights on property](https://www.ine.es/en/metodologia/t30/t3030168_
 7. **Jin et al. (2024)**  
 *Understanding the effects of socioeconomic factors on housing price appreciation using explainable AI*  
 [https://doi.org/10.1016/j.landusepol.2023.106559](https://doi.org/10.1016/j.landusepol.2023.106559) -> Renta per cápita / por declarante, Nivel educativo (% población con estudios universitarios, % sin estudios), Estructura demográfica, Estructura sectorial, Turismo.
+
+## Datos/variables a estudiar, su referencia o paper y su fuente de obtención
+- 1.1 % de viviendas en bloques de pisos vs unifamiliares de Antipov & Pokryshevskaya, Beimer & Francke y Mora-García et al.
+- 
