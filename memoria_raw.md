@@ -16,6 +16,8 @@ transfers of rights on property](https://www.ine.es/en/metodologia/t30/t3030168_
 [Datos padron](https://www.ine.es/dynt3/inebase/index.htm?padre=6225&capsel=6225)
 [Atlas de Distribucion de Renta de los Hogares](https://www.ine.es/ADRH/?config=config_ADRH_2023.json&showLayers=ADRH_2023_Renta_media_por_persona_cache&level=5)
 [Valor Tasado de la vivienda libre](https://apps.fomento.gob.es/BoletinOnline2/?nivel=2&orden=35000000)
+[Encuesta de Características Esenciales de la Población y las Viviendas. Resultados](https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177092&menu=resultados&idp=1254735572981)
+[Etadisticas de Catastro](https://www.catastro.hacienda.gob.es/esp/estadisticas.asp)
 
 
 ## Otros trabajos academicos:
