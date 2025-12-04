@@ -13,12 +13,35 @@ transfers of rights on property](https://www.ine.es/en/metodologia/t30/t3030168_
 
 
 ## Bibliografia
-[Datos padron](https://www.ine.es/dynt3/inebase/index.htm?padre=6225&capsel=6225)
-[Atlas de Distribucion de Renta de los Hogares](https://www.ine.es/ADRH/?config=config_ADRH_2023.json&showLayers=ADRH_2023_Renta_media_por_persona_cache&level=5)
-[Valor Tasado de la vivienda libre](https://apps.fomento.gob.es/BoletinOnline2/?nivel=2&orden=35000000)
+[Datos padron](https://www.ine.es/dynt3/inebase/index.htm?padre=6225&capsel=6225) (Para estudiar las variaciones de la poblacion por año)
+
+[Atlas de Distribucion de Renta de los Hogares](https://www.ine.es/ADRH/?config=config_ADRH_2023.json&showLayers=ADRH_2023_Renta_media_por_persona_cache&level=5) (Mora García et al. (2022), Jin et al. (2024))
+
+[Valor Tasado de la vivienda libre](https://apps.fomento.gob.es/BoletinOnline2/?nivel=2&orden=35000000) (Jin et al. (2024))
+
 [Encuesta de Características Esenciales de la Población y las Viviendas. Resultados](https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736177092&menu=resultados&idp=1254735572981)
+
 [Etadisticas de Catastro](https://www.catastro.hacienda.gob.es/esp/estadisticas.asp)
 
+[Edificios destinados principal o exclusivamente a viviendas y nº de inmuebles por municipios (con más de 2.000 habitantes), instalaciones del edificio y nº de plantas sobre rasante](https://www.ine.es/jaxi/Tabla.htm?path=/t20/e244/edificios/p04/l0/&file=5mun00.px&L=0) (Mora García et al. (2022) tiene en cuenta si hay ascensor en los edificios)
+
+[Situación del hogar y superficie útil](https://www.ine.es/dynt3/inebase/index.htm?padre=8981&capsel=8981) 
+
+[Superficie por ingreso neto](https://www.ine.es/dynt3/inebase/index.htm?padre=8981&capsel=8981)
+
+[ADRH (Renta)](https://www.ine.es/ADRH/?config=config_ADRH_2023.json&showLayers=ADRH_2023_Renta_media_por_hogar_cache&level=5) (Mora García et al. (2022), Jin et al. (2024))
+
+[Viviendas principales según número de cuartos de baño o aseos por tipo de edificio y año de construcción](https://www.ine.es/jaxi/Tabla.htm?tpx=56866&L=0) (Antipov & Pokryshevskaya, Fu (2024), Mora García et al. (2022))
+
+[Viviendas principales según número de cuartos de baño o aseos por superficie útil de la vivienda y tamaño del municipio.](https://www.ine.es/jaxi/Tabla.htm?tpx=56837&L=0) (Antipov & Pokryshevskaya, Fu (2024), Mora García et al. (2022))
+
+[Población por sexo, edad y nacionalidad](https://www.ine.es/dynt3/inebase/index.htm?padre=11555&capsel=11398) (Jin et al. (2024))
+
+[Compraventa de viviendas (volumen) según régimen y estado](https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736171438&menu=resultados&idp=1254735576757#_tabs-1254736171259) (Wu & Brynjolfsson (2015), Beimer & Francke (2019) y Park & Bae (2015))
+
+[Paro municipal por mes y sexo](https://www.sepe.es/HomeSepe/es/que-es-el-sepe/estadisticas/datos-estadisticos.html)(Varios estudios incluyen variales económicas, macro y micro: Park & Bae (2015), Wu & Brynjolfsson (2015) y Jin et al. (2024)). Esta generado con el fetcher de fetch_sepe_paro_all.py 
+
+[Banco de España. Tipos de interés](https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/ti_1_7.csv)(Varios estudios incluyen variales económicas, macro y micro: Park & Bae (2015), Wu & Brynjolfsson (2015) y Jin et al. (2024)). Descargado con el fetcher
 
 ## Otros trabajos academicos:
 1. **Antipov & Pokryshevskaya (2012)**  
@@ -48,7 +71,3 @@ transfers of rights on property](https://www.ine.es/en/metodologia/t30/t3030168_
 7. **Jin et al. (2024)**  
 *Understanding the effects of socioeconomic factors on housing price appreciation using explainable AI*  
 [https://doi.org/10.1016/j.landusepol.2023.106559](https://doi.org/10.1016/j.landusepol.2023.106559) -> Renta per cápita / por declarante, Nivel educativo (% población con estudios universitarios, % sin estudios), Estructura demográfica, Estructura sectorial, Turismo.
-
-## Datos/variables a estudiar, su referencia o paper y su fuente de obtención
-- 1.1 % de viviendas en bloques de pisos vs unifamiliares de Antipov & Pokryshevskaya, Beimer & Francke y Mora-García et al.
-- 
